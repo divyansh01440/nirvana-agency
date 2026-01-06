@@ -124,12 +124,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-                    <p className="text-muted-foreground">
-                      info@nirvanatech.com
-                    </p>
-                    <p className="text-muted-foreground">
-                      support@nirvanatech.com
-                    </p>
+                    <a href="mailto:nirvanatech07@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      nirvanatech07@gmail.com
+                    </a>
                   </div>
                 </div>
               </Card>
@@ -155,11 +152,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Visit Us</h3>
                     <p className="text-muted-foreground">
-                      123 Tech Street
-                      <br />
-                      Silicon Valley, CA 94000
-                      <br />
-                      United States
+                      Garha, Jabalpur, M.P, INDIA
                     </p>
                   </div>
                 </div>

@@ -69,14 +69,9 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <Mail size={16} className="text-primary mt-0.5" />
-                <div className="flex flex-col space-y-1">
-                  <a href="mailto:info@nirvanatech.com" className="hover:text-primary transition-colors">
-                    info@nirvanatech.com
-                  </a>
-                  <a href="mailto:support@nirvanatech.com" className="hover:text-primary transition-colors">
-                    support@nirvanatech.com
-                  </a>
-                </div>
+                <a href="mailto:nirvanatech07@gmail.com" className="hover:text-primary transition-colors">
+                  nirvanatech07@gmail.com
+                </a>
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <Phone size={16} className="text-primary mt-0.5" />
@@ -87,11 +82,7 @@ export function Footer() {
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin size={16} className="text-primary mt-0.5" />
-                <div className="flex flex-col">
-                  <span>123 Tech Street</span>
-                  <span>Silicon Valley, CA 94000</span>
-                  <span>United States</span>
-                </div>
+                <span>Garha, Jabalpur, M.P, INDIA</span>
               </li>
             </ul>
           </div>
