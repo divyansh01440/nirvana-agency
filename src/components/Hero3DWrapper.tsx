@@ -1,11 +1,7 @@
 import { Suspense, lazy, useState, useEffect } from "react";
 
-// Lazy load the 3D component
-const Hero3D = lazy(() =>
-  import("@/components/Hero3D").then((module) => ({
-    default: module.Hero3D,
-  }))
-);
+// Lazy load the 3D component - it's already a default export
+const Hero3D = lazy(() => import("@/components/Hero3D"));
 
 // Fallback component with similar visual effect
 function Hero3DFallback() {

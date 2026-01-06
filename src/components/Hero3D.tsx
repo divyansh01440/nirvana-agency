@@ -85,3 +85,6 @@ export function Hero3D() {
     </div>
   );
 }
+
+// Default export for lazy loading
+export default Hero3D;
