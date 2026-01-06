@@ -40,6 +40,13 @@ import {
   FolderKanban,
   Plus,
   Trash2,
+  Mail,
+  Phone,
+  MapPin,
+  Building2,
+  Briefcase,
+  Eye,
+  Filter,
 } from "lucide-react";
 
 export default function AdminDashboard() {
@@ -65,6 +72,9 @@ export default function AdminDashboard() {
     liveUrl: "",
     description: "",
   });
+
+  const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [selectedBooking, setSelectedBooking] = useState<any>(null);
 
   if (!user) {
     navigate("/auth");
@@ -134,6 +144,27 @@ export default function AdminDashboard() {
     }
   };
 
+  const filteredBookings = bookings?.filter((booking) =>
+    statusFilter === "all" ? true : booking.status === statusFilter
+  ) || [];
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "Pending":
+        return "bg-yellow-500/20 text-yellow-300 border-yellow-500/30";
+      case "Attended":
+        return "bg-blue-500/20 text-blue-300 border-blue-500/30";
+      case "Purchased Service":
+        return "bg-green-500/20 text-green-300 border-green-500/30";
+      case "Not Interested":
+        return "bg-red-500/20 text-red-300 border-red-500/30";
+      case "Not Attended":
+        return "bg-orange-500/20 text-orange-300 border-orange-500/30";
+      default:
+        return "bg-gray-500/20 text-gray-300 border-gray-500/30";
+    }
+  };
+
   return (
     <div className="min-h-screen custom-cursor">
       <Navbar />
@@ -198,69 +229,229 @@ export default function AdminDashboard() {
           {/* Bookings Tab */}
           <TabsContent value="bookings">
             <Card className="glass-strong p-6">
-              <h2 className="text-2xl font-semibold mb-4">Customer Bookings</h2>
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Company</TableHead>
-                      <TableHead>Email</TableHead>
-                      <TableHead>Service</TableHead>
-                      <TableHead>Contact</TableHead>
-                      <TableHead>Location</TableHead>
-                      <TableHead>Status</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {bookings && bookings.length > 0 ? (
-                      bookings.map((booking) => (
-                        <TableRow key={booking._id}>
-                          <TableCell className="font-medium">
-                            {booking.companyName}
-                          </TableCell>
-                          <TableCell>{booking.email}</TableCell>
-                          <TableCell>{booking.service}</TableCell>
-                          <TableCell>{booking.contactNumber}</TableCell>
-                          <TableCell>
-                            {booking.city}, {booking.state}
-                          </TableCell>
-                          <TableCell>
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                <h2 className="text-2xl font-semibold">Customer Bookings</h2>
+                <div className="flex items-center gap-2">
+                  <Filter className="w-4 h-4 text-muted-foreground" />
+                  <Select value={statusFilter} onValueChange={setStatusFilter}>
+                    <SelectTrigger className="w-[180px] glass">
+                      <SelectValue placeholder="Filter by status" />
+                    </SelectTrigger>
+                    <SelectContent className="glass-strong">
+                      <SelectItem value="all">All Bookings</SelectItem>
+                      <SelectItem value="Pending">Pending</SelectItem>
+                      <SelectItem value="Attended">Attended</SelectItem>
+                      <SelectItem value="Not Attended">Not Attended</SelectItem>
+                      <SelectItem value="Not Sure">Not Sure</SelectItem>
+                      <SelectItem value="Purchased Service">
+                        Purchased Service
+                      </SelectItem>
+                      <SelectItem value="Not Interested">Not Interested</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {filteredBookings && filteredBookings.length > 0 ? (
+                  filteredBookings.map((booking) => (
+                    <Card key={booking._id} className="glass p-6 hover:glass-strong transition-all">
+                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        {/* Left Column - Company & Service Info */}
+                        <div className="space-y-4">
+                          <div>
+                            <div className="flex items-center gap-2 mb-2">
+                              <Building2 className="w-4 h-4 text-primary" />
+                              <span className="text-xs text-muted-foreground uppercase">
+                                Company
+                              </span>
+                            </div>
+                            <p className="font-bold text-lg">{booking.companyName}</p>
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2 mb-2">
+                              <Briefcase className="w-4 h-4 text-primary" />
+                              <span className="text-xs text-muted-foreground uppercase">
+                                Service
+                              </span>
+                            </div>
+                            <p className="font-medium">{booking.service}</p>
+                          </div>
+                        </div>
+
+                        {/* Middle Column - Contact Info */}
+                        <div className="space-y-4">
+                          <div>
+                            <div className="flex items-center gap-2 mb-2">
+                              <Mail className="w-4 h-4 text-primary" />
+                              <span className="text-xs text-muted-foreground uppercase">
+                                Email
+                              </span>
+                            </div>
+                            <p className="text-sm break-all">{booking.email}</p>
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2 mb-2">
+                              <Phone className="w-4 h-4 text-primary" />
+                              <span className="text-xs text-muted-foreground uppercase">
+                                Contact
+                              </span>
+                            </div>
+                            <p className="text-sm">{booking.contactNumber}</p>
+                            {booking.alternativeContactNumber && (
+                              <p className="text-xs text-muted-foreground mt-1">
+                                Alt: {booking.alternativeContactNumber}
+                              </p>
+                            )}
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2 mb-2">
+                              <MapPin className="w-4 h-4 text-primary" />
+                              <span className="text-xs text-muted-foreground uppercase">
+                                Location
+                              </span>
+                            </div>
+                            <p className="text-sm">
+                              {booking.address}
+                            </p>
+                            <p className="text-sm">
+                              {booking.city}, {booking.state} - {booking.pincode}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Right Column - Status & Actions */}
+                        <div className="space-y-4">
+                          <div>
+                            <div className="flex items-center gap-2 mb-3">
+                              <Calendar className="w-4 h-4 text-primary" />
+                              <span className="text-xs text-muted-foreground uppercase">
+                                Status
+                              </span>
+                            </div>
+                            <div
+                              className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium border mb-3 ${getStatusColor(
+                                booking.status
+                              )}`}
+                            >
+                              {booking.status}
+                            </div>
                             <Select
                               value={booking.status}
                               onValueChange={(value) =>
                                 handleStatusUpdate(booking._id, value)
                               }
                             >
-                              <SelectTrigger className="w-[180px] glass">
-                                <SelectValue />
+                              <SelectTrigger className="w-full glass">
+                                <SelectValue placeholder="Update status" />
                               </SelectTrigger>
                               <SelectContent className="glass-strong">
-                                <SelectItem value="Pending">Pending</SelectItem>
-                                <SelectItem value="Attended">Attended</SelectItem>
+                                <SelectItem value="Pending">📋 Pending</SelectItem>
+                                <SelectItem value="Attended">✅ Attended</SelectItem>
                                 <SelectItem value="Not Attended">
-                                  Not Attended
+                                  ❌ Not Attended
                                 </SelectItem>
-                                <SelectItem value="Not Sure">Not Sure</SelectItem>
+                                <SelectItem value="Not Sure">❓ Not Sure</SelectItem>
                                 <SelectItem value="Purchased Service">
-                                  Purchased Service
+                                  💰 Purchased Service
                                 </SelectItem>
                                 <SelectItem value="Not Interested">
-                                  Not Interested
+                                  🚫 Not Interested
                                 </SelectItem>
                               </SelectContent>
                             </Select>
-                          </TableCell>
-                        </TableRow>
-                      ))
-                    ) : (
-                      <TableRow>
-                        <TableCell colSpan={6} className="text-center py-8">
-                          No bookings yet
-                        </TableCell>
-                      </TableRow>
-                    )}
-                  </TableBody>
-                </Table>
+                          </div>
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <Button
+                                variant="outline"
+                                className="w-full glass"
+                                onClick={() => setSelectedBooking(booking)}
+                              >
+                                <Eye className="w-4 h-4 mr-2" />
+                                View Details
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent className="glass-strong max-w-2xl max-h-[80vh] overflow-y-auto">
+                              <DialogHeader>
+                                <DialogTitle>Booking Details</DialogTitle>
+                              </DialogHeader>
+                              {selectedBooking && (
+                                <div className="space-y-6">
+                                  <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                      <Label className="text-muted-foreground">Company</Label>
+                                      <p className="font-semibold mt-1">
+                                        {selectedBooking.companyName}
+                                      </p>
+                                    </div>
+                                    <div>
+                                      <Label className="text-muted-foreground">Service</Label>
+                                      <p className="font-semibold mt-1">
+                                        {selectedBooking.service}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                      <Label className="text-muted-foreground">Email</Label>
+                                      <p className="mt-1">{selectedBooking.email}</p>
+                                    </div>
+                                    <div>
+                                      <Label className="text-muted-foreground">
+                                        Contact Number
+                                      </Label>
+                                      <p className="mt-1">{selectedBooking.contactNumber}</p>
+                                    </div>
+                                  </div>
+                                  {selectedBooking.alternativeContactNumber && (
+                                    <div>
+                                      <Label className="text-muted-foreground">
+                                        Alternative Contact
+                                      </Label>
+                                      <p className="mt-1">
+                                        {selectedBooking.alternativeContactNumber}
+                                      </p>
+                                    </div>
+                                  )}
+                                  <div>
+                                    <Label className="text-muted-foreground">Address</Label>
+                                    <p className="mt-1">{selectedBooking.address}</p>
+                                    <p className="mt-1">
+                                      {selectedBooking.city}, {selectedBooking.state} -{" "}
+                                      {selectedBooking.pincode}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <Label className="text-muted-foreground">
+                                      Current Status
+                                    </Label>
+                                    <div
+                                      className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium border mt-2 ${getStatusColor(
+                                        selectedBooking.status
+                                      )}`}
+                                    >
+                                      {selectedBooking.status}
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                            </DialogContent>
+                          </Dialog>
+                        </div>
+                      </div>
+                    </Card>
+                  ))
+                ) : (
+                  <div className="text-center py-12">
+                    <Calendar className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                    <p className="text-muted-foreground">
+                      {statusFilter === "all"
+                        ? "No bookings yet"
+                        : `No ${statusFilter.toLowerCase()} bookings`}
+                    </p>
+                  </div>
+                )}
               </div>
             </Card>
           </TabsContent>
