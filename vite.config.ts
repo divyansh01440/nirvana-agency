@@ -5,11 +5,13 @@ import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   build: {
     // Enable source maps for better debugging (disable in production if needed)
