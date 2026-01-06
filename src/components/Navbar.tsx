@@ -43,10 +43,12 @@ export function Navbar() {
         }`}
       >
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-primary border-4 border-black flex items-center justify-center transform rotate-3 hover:rotate-6 transition-transform">
-            <span className="text-black font-black text-xl">N</span>
-          </div>
+        <Link to="/" className="flex items-center space-x-3">
+          <img
+            src="https://harmless-tapir-303.convex.cloud/api/storage/779a82d1-7f12-47d3-8366-6de246739ec6"
+            alt="Nirvana Tech Solutions"
+            className="h-12 w-auto transform hover:scale-110 transition-transform"
+          />
           <span className="font-black text-xl hidden md:block uppercase">
             Nirvana Tech
           </span>
