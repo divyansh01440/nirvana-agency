@@ -1,9 +1,4 @@
-import { Suspense, lazy, useState, useEffect } from "react";
-
-// Lazy load the 3D component - it's already a default export
-const Hero3D = lazy(() => import("@/components/Hero3D"));
-
-// Fallback component with similar visual effect
+// Animated gradient sphere - beautiful fallback that always works
 function Hero3DFallback() {
   return (
     <div className="w-full h-full flex items-center justify-center">
@@ -16,22 +11,8 @@ function Hero3DFallback() {
   );
 }
 
+// Temporarily using fallback only to ensure site works
+// The 3D can be re-enabled once deployment issues are resolved
 export function Hero3DWrapper() {
-  const [shouldLoad, setShouldLoad] = useState(false);
-
-  useEffect(() => {
-    // Delay loading the 3D component slightly to ensure page loads first
-    const timer = setTimeout(() => setShouldLoad(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!shouldLoad) {
-    return <Hero3DFallback />;
-  }
-
-  return (
-    <Suspense fallback={<Hero3DFallback />}>
-      <Hero3D />
-    </Suspense>
-  );
+  return <Hero3DFallback />;
 }
