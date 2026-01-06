@@ -1,257 +1,311 @@
-## Overview
+# 🌟 Nirvana Tech Solutions
 
-This project uses the following tech stack:
-- Vite
-- Typescript
-- React Router v7 (all imports from `react-router` instead of `react-router-dom`)
-- React 19 (for frontend components)
-- Tailwind v4 (for styling)
-- Shadcn UI (for UI components library)
-- Lucide Icons (for icons)
-- Convex (for backend & database)
-- Convex Auth (for authentication)
-- Framer Motion (for animations)
-- Three js (for 3d models)
+A premium, dark-themed tech agency platform with glassmorphism design, complete booking system, and admin dashboard.
 
-All relevant files live in the 'src' directory.
+![Tech Stack](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Convex](https://img.shields.io/badge/Convex-F04E23?style=for-the-badge)
 
-Use pnpm for the package manager.
+## ✨ Features
 
-## Setup
+### 🎨 Design
+- **Dark Glassmorphism Theme** - Modern, premium aesthetic
+- **Custom Glass Cursor** - Unique interactive cursor effect
+- **Smooth Animations** - Framer Motion powered transitions
+- **Mobile Responsive** - Works perfectly on all devices
+- **Animated Gradient Hero** - Eye-catching landing section
 
-This project is set up already and running on a cloud environment, as well as a convex development in the sandbox.
+### 🔐 Authentication
+- Email OTP authentication (Convex Auth)
+- Role-based access control (admin/user)
+- Protected routes
 
-## Environment Variables
+### 📄 Pages
+1. **Home** (`/`) - Hero, services, reviews, about
+2. **Projects** (`/projects`) - Portfolio showcase with 6 seeded projects
+3. **Contact** (`/contact`) - Contact form for queries
+4. **Book a Call** (`/book-call`) - Booking system (requires login)
+5. **Admin Dashboard** (`/admin`) - Complete management system (admin only)
 
-The project is set up with project specific CONVEX_DEPLOYMENT and VITE_CONVEX_URL environment variables on the client side.
+### 🛠️ Backend Features
+- **Bookings Management** - Create, view, update status
+- **Projects CRUD** - Add/delete portfolio items
+- **Queries System** - Contact form submissions
+- **Reviews & Ratings** - Only from users who purchased services
+- **Analytics Tracking** - Automatic visitor and pageview tracking
+- **Real-time Updates** - Convex reactive database
 
-The convex server has a separate set of environment variables that are accessible by the convex backend.
+### 👨‍💼 Admin Capabilities
+- View dashboard statistics
+- Manage all bookings (update status)
+- Review and resolve queries
+- Approve/reject customer reviews
+- Add/delete projects
+- View analytics charts
 
-Currently, these variables include auth-specific keys: JWKS, JWT_PRIVATE_KEY, and SITE_URL.
+## 🚀 Quick Start
 
-
-# Using Authentication (Important!)
-
-You must follow these conventions when using authentication.
-
-## Auth is already set up.
-
-All convex authentication functions are already set up. The auth currently uses email OTP and anonymous users, but can support more.
-
-The email OTP configuration is defined in `src/convex/auth/emailOtp.ts`. DO NOT MODIFY THIS FILE.
-
-Also, DO NOT MODIFY THESE AUTH FILES: `src/convex/auth.config.ts` and `src/convex/auth.ts`.
-
-## Using Convex Auth on the backend
-
-On the `src/convex/users.ts` file, you can use the `getCurrentUser` function to get the current user's data.
-
-## Using Convex Auth on the frontend
-
-The `/auth` page is already set up to use auth. Navigate to `/auth` for all log in / sign up sequences.
-
-You MUST use this hook to get user data. Never do this yourself without the hook:
-```typescript
-import { useAuth } from "@/hooks/use-auth";
-
-const { isLoading, isAuthenticated, user, signIn, signOut } = useAuth();
+### 1. Install Dependencies
+```bash
+pnpm install
 ```
 
-## Protected Routes
+### 2. Setup Convex
+```bash
+npx convex dev
+```
 
-When protecting a page, use the auth hooks to check for authentication and redirect to /auth.
+### 3. Seed Database (Optional)
+```bash
+npx convex run seed:seedDatabase
+```
 
-## Auth Page
+### 4. Start Development Server
+```bash
+pnpm dev
+```
 
-The auth page is defined in `src/pages/Auth.tsx`. Redirect authenticated pages and sign in / sign up to /auth.
+Visit: http://localhost:5173
 
-## Authorization
+## 🔐 Admin Setup - IMPORTANT!
 
-You can perform authorization checks on the frontend and backend.
+### Step 1: Create Your Account
+1. Go to `/auth`
+2. Enter your email
+3. Verify with code sent to email
+4. Complete signup
 
-On the frontend, you can use the `useAuth` hook to get the current user's data and authentication state.
+### Step 2: Make Yourself Admin
+```bash
+npx convex run adminSetup:makeAdmin '{"email":"your@email.com"}'
+```
 
-You should also be protecting queries, mutations, and actions at the base level, checking for authorization securely.
+### Step 3: Access Dashboard
+Go to `/admin` - you now have full admin access!
 
-## Adding a redirect after auth
+**See `ADMIN_SETUP.md` for detailed instructions.**
 
-In `src/main.tsx`, you must add a redirect after auth URL to redirect to the correct dashboard/profile/page that should be created after authentication.
-
-# Frontend Conventions
-
-You will be using the Vite frontend with React 19, Tailwind v4, and Shadcn UI.
-
-Generally, pages should be in the `src/pages` folder, and components should be in the `src/components` folder.
-
-Shadcn primitives are located in the `src/components/ui` folder and should be used by default.
-
-## Page routing
-
-Your page component should go under the `src/pages` folder.
-
-When adding a page, update the react router configuration in `src/main.tsx` to include the new route you just added.
-
-## Shad CN conventions
-
-Follow these conventions when using Shad CN components, which you should use by default.
-- Remember to use "cursor-pointer" to make the element clickable
-- For title text, use the "tracking-tight font-bold" class to make the text more readable
-- Always make apps MOBILE RESPONSIVE. This is important
-- AVOID NESTED CARDS. Try and not to nest cards, borders, components, etc. Nested cards add clutter and make the app look messy.
-- AVOID SHADOWS. Avoid adding any shadows to components. stick with a thin border without the shadow.
-- Avoid skeletons; instead, use the loader2 component to show a spinning loading state when loading data.
-
-
-## Landing Pages
-
-You must always create good-looking designer-level styles to your application. 
-- Make it well animated and fit a certain "theme", ie neo brutalist, retro, neumorphism, glass morphism, etc
-
-Use known images and emojis from online.
-
-If the user is logged in already, show the get started button to say "Dashboard" or "Profile" instead to take them there.
-
-## Responsiveness and formatting
-
-Make sure pages are wrapped in a container to prevent the width stretching out on wide screens. Always make sure they are centered aligned and not off-center.
-
-Always make sure that your designs are mobile responsive. Verify the formatting to ensure it has correct max and min widths as well as mobile responsiveness.
-
-- Always create sidebars for protected dashboard pages and navigate between pages
-- Always create navbars for landing pages
-- On these bars, the created logo should be clickable and redirect to the index page
-
-## Animating with Framer Motion
-
-You must add animations to components using Framer Motion. It is already installed and configured in the project.
-
-To use it, import the `motion` component from `framer-motion` and use it to wrap the component you want to animate.
-
-
-### Other Items to animate
-- Fade in and Fade Out
-- Slide in and Slide Out animations
-- Rendering animations
-- Button clicks and UI elements
-
-Animate for all components, including on landing page and app pages.
-
-## Three JS Graphics
-
-Your app comes with three js by default. You can use it to create 3D graphics for landing pages, games, etc.
-
-
-## Colors
-
-You can override colors in: `src/index.css`
-
-This uses the oklch color format for tailwind v4.
-
-Always use these color variable names.
-
-Make sure all ui components are set up to be mobile responsive and compatible with both light and dark mode.
-
-Set theme using `dark` or `light` variables at the parent className.
-
-## Styling and Theming
-
-When changing the theme, always change the underlying theme of the shad cn components app-wide under `src/components/ui` and the colors in the index.css file.
-
-Avoid hardcoding in colors unless necessary for a use case, and properly implement themes through the underlying shad cn ui components.
-
-When styling, ensure buttons and clickable items have pointer-click on them (don't by default).
-
-Always follow a set theme style and ensure it is tuned to the user's liking.
-
-## Toasts
-
-You should always use toasts to display results to the user, such as confirmations, results, errors, etc.
-
-Use the shad cn Sonner component as the toaster. For example:
+## 📁 Project Structure
 
 ```
-import { toast } from "sonner"
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # shadcn/ui components
+│   ├── CustomCursor.tsx
+│   ├── Footer.tsx
+│   └── Navbar.tsx
+├── pages/              # Route pages
+│   ├── AdminDashboard.tsx
+│   ├── Auth.tsx
+│   ├── BookCall.tsx
+│   ├── Contact.tsx
+│   ├── Home.tsx
+│   ├── Projects.tsx
+│   └── NotFound.tsx
+├── convex/             # Backend functions
+│   ├── schema.ts       # Database schema
+│   ├── bookings.ts     # Booking operations
+│   ├── projects.ts     # Projects CRUD
+│   ├── queries.ts      # Contact queries
+│   ├── reviews.ts      # Reviews system
+│   ├── analytics.ts    # Analytics tracking
+│   ├── seed.ts         # Database seeding
+│   └── adminSetup.ts   # Admin utilities
+├── index.css           # Global styles & theme
+└── main.tsx            # App entry point
+```
 
-import { Button } from "@/components/ui/button"
-export function SonnerDemo() {
-  return (
-    <Button
-      variant="outline"
-      onClick={() =>
-        toast("Event has been created", {
-          description: "Sunday, December 03, 2023 at 9:00 AM",
-          action: {
-            label: "Undo",
-            onClick: () => console.log("Undo"),
-          },
-        })
-      }
-    >
-      Show Toast
-    </Button>
-  )
+## 🎨 Theme Customization
+
+Colors are defined in `src/index.css` using OKLCH color space:
+
+```css
+:root {
+  --background: oklch(0.08 0 0);     /* Almost black */
+  --foreground: oklch(0.98 0 0);     /* Pure white */
+  --primary: oklch(0.75 0.15 195);   /* Neon cyan */
+  --card: oklch(0.12 0 0 / 40%);     /* Glass effect */
 }
 ```
 
-Remember to import { toast } from "sonner". Usage: `toast("Event has been created.")`
+## 🗄️ Database Schema
 
-## Dialogs
+| Table | Purpose | Key Fields |
+|-------|---------|------------|
+| `users` | User accounts | email, role, name |
+| `bookings` | Service bookings | userId, service, status |
+| `projects` | Portfolio items | name, thumbnailUrl, liveUrl |
+| `queries` | Contact messages | name, email, message, status |
+| `reviews` | Customer reviews | userId, bookingId, rating, approved |
+| `analytics` | Traffic data | date, visitors, pageViews |
 
-Always ensure your larger dialogs have a scroll in its content to ensure that its content fits the screen size. Make sure that the content is not cut off from the screen.
+## 🔒 User Roles
 
-Ideally, instead of using a new page, use a Dialog instead. 
+- **`admin`** - Full dashboard access, can manage everything
+- **`user`** - Can book services, leave reviews (if purchased)
+- **`member`** - Reserved for future features
 
-# Using the Convex backend
+## 📊 Booking Status Flow
 
-You will be implementing the convex backend. Follow your knowledge of convex and the documentation to implement the backend.
-
-## The Convex Schema
-
-You must correctly follow the convex schema implementation.
-
-The schema is defined in `src/convex/schema.ts`.
-
-Do not include the `_id` and `_creationTime` fields in your queries (it is included by default for each table).
-Do not index `_creationTime` as it is indexed for you. Never have duplicate indexes.
-
-
-## Convex Actions: Using CRUD operations
-
-When running anything that involves external connections, you must use a convex action with "use node" at the top of the file.
-
-You cannot have queries or mutations in the same file as a "use node" action file. Thus, you must use pre-built queries and mutations in other files.
-
-You can also use the pre-installed internal crud functions for the database:
-
-```ts
-// in convex/users.ts
-import { crud } from "convex-helpers/server/crud";
-import schema from "./schema.ts";
-
-export const { create, read, update, destroy } = crud(schema, "users");
-
-// in some file, in an action:
-const user = await ctx.runQuery(internal.users.read, { id: userId });
-
-await ctx.runMutation(internal.users.update, {
-  id: userId,
-  patch: {
-    status: "inactive",
-  },
-});
+```
+Pending → Attended → Purchased Service ✅
+        → Not Attended ❌
+        → Not Sure ❓
+        → Not Interested ❌
 ```
 
+Only users with "Purchased Service" status can leave reviews.
 
-## Common Convex Mistakes To Avoid
+## 🛠️ Tech Stack
 
-When using convex, make sure:
-- Document IDs are referenced as `_id` field, not `id`.
-- Document ID types are referenced as `Id<"TableName">`, not `string`.
-- Document object types are referenced as `Doc<"TableName">`.
-- Keep schemaValidation to false in the schema file.
-- You must correctly type your code so that it passes the type checker.
-- You must handle null / undefined cases of your convex queries for both frontend and backend, or else it will throw an error that your data could be null or undefined.
-- Always use the `@/folder` path, with `@/convex/folder/file.ts` syntax for importing convex files.
-- This includes importing generated files like `@/convex/_generated/server`, `@/convex/_generated/api`
-- Remember to import functions like useQuery, useMutation, useAction, etc. from `convex/react`
-- NEVER have return type validators.
+### Frontend
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **React Router v7** - Client-side routing
+- **Tailwind CSS v4** - Utility-first styling
+- **shadcn/ui** - Component library
+- **Framer Motion** - Animations
+- **Recharts** - Analytics charts
+- **Sonner** - Toast notifications
+- **Three.js** - 3D graphics
+
+### Backend
+- **Convex** - Real-time serverless database
+- **Convex Auth** - Email OTP authentication
+
+## 📜 Available Scripts
+
+```bash
+# Development
+pnpm dev              # Start dev server
+npx convex dev        # Start Convex backend
+
+# Build
+pnpm build            # Build for production
+pnpm preview          # Preview production build
+
+# Type checking
+npx tsc -b --noEmit   # Check TypeScript errors
+
+# Database
+npx convex run seed:seedDatabase          # Seed test data
+npx convex run adminSetup:makeAdmin       # Make user admin
+npx convex run adminSetup:checkAdmin      # Check admin status
+```
+
+## 🔧 Configuration Files
+
+- `.vlyrc.json` - Vly deployment config
+- `vite.config.ts` - Vite build configuration
+- `tailwind.config.ts` - Tailwind CSS config
+- `tsconfig.json` - TypeScript config
+
+## 📱 Responsive Design
+
+Optimized for:
+- **Desktop**: 1920px+
+- **Laptop**: 1024px+
+- **Tablet**: 768px+
+- **Mobile**: 375px+
+
+## 🎯 Key Features Detail
+
+### Booking System
+- Full form with company details, service selection
+- Contact information (phone, alternative phone)
+- Complete address (state, city, pincode)
+- Status tracking by admin
+- Email notifications (can be added)
+
+### Admin Dashboard
+- **Stats Cards**: Bookings, queries, projects, revenue
+- **Bookings Table**: View all with filter by status
+- **Queries Management**: Mark as resolved
+- **Reviews Approval**: Approve/reject feedback
+- **Projects CRUD**: Add with thumbnail, URL, description
+- **Analytics Chart**: 30-day visitor trends
+
+### Reviews System
+- Only users who "Purchased Service" can review
+- Admin approval required before public display
+- 5-star rating with text feedback
+- Displayed on homepage with user info
+
+## 🚨 Troubleshooting
+
+### Site not loading?
+```bash
+# Hard refresh browser
+Ctrl + Shift + R (Windows)
+Cmd + Shift + R (Mac)
+```
+
+### Can't access admin dashboard?
+```bash
+# Check admin status
+npx convex run adminSetup:checkAdmin '{"email":"your@email.com"}'
+
+# Make admin if needed
+npx convex run adminSetup:makeAdmin '{"email":"your@email.com"}'
+```
+
+### TypeScript errors?
+```bash
+npx tsc -b --noEmit
+```
+
+### Need fresh data?
+```bash
+npx convex run seed:seedDatabase
+```
+
+## 📚 Documentation
+
+- **Quick Start Guide**: `QUICK_START.md`
+- **Admin Setup**: `ADMIN_SETUP.md`
+
+## 🎉 Live Demo
+
+**URL**: https://two-hotels-strive.vly.sh
+
+### Test Data
+The database includes:
+- ✅ 6 portfolio projects
+- ✅ 30 days of analytics
+- ✅ Sample approved reviews (when seeded)
+
+### Admin Access
+Follow `ADMIN_SETUP.md` to create your admin account.
+
+## 🔐 Security Features
+
+- ✅ Email-based authentication (OTP)
+- ✅ Role-based access control
+- ✅ Protected admin routes
+- ✅ Server-side validation
+- ✅ Convex authentication integration
+
+## 🌟 Design Highlights
+
+- **Glassmorphism cards** with backdrop blur
+- **Neon cyan accents** for modern tech feel
+- **Custom cursor** with glass effect
+- **Smooth page transitions** with Framer Motion
+- **Animated hero gradient** for visual impact
+- **Consistent spacing** and typography
+- **Dark theme** optimized for readability
+
+## 📈 Analytics
+
+Automatic tracking of:
+- Daily unique visitors
+- Total page views
+- 30-day trends displayed in admin dashboard
+
+---
+
+**Built with ❤️ for Nirvana Tech Solutions**
+
+🚀 **Ready to manage your tech agency!**

@@ -50,9 +50,9 @@ export const seedDatabase = mutation({
       createdProjects.push(id);
     }
 
-    // Add initial analytics data for the past 7 days
+    // Add initial analytics data for the past 30 days
     const today = new Date();
-    for (let i = 6; i >= 0; i--) {
+    for (let i = 29; i >= 0; i--) {
       const date = new Date(today);
       date.setDate(date.getDate() - i);
       const dateStr = date.toISOString().split("T")[0];
@@ -67,6 +67,7 @@ export const seedDatabase = mutation({
     return {
       message: "Database seeded successfully!",
       projectsCreated: createdProjects.length,
+      analyticsCreated: 30,
     };
   },
 });
