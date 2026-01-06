@@ -38,39 +38,39 @@ export function Navbar() {
       }`}
     >
       <div
-        className={`glass-strong rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300 ${
+        className={`glass-strong px-6 py-3 flex items-center justify-between transition-all duration-300 ${
           scrolled ? "py-2" : ""
         }`}
       >
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
-          <div className="w-8 h-8 rounded-full bg-primary glow-cyan flex items-center justify-center">
-            <span className="text-black font-bold text-sm">N</span>
+          <div className="w-10 h-10 bg-primary border-4 border-black flex items-center justify-center transform rotate-3 hover:rotate-6 transition-transform">
+            <span className="text-black font-black text-xl">N</span>
           </div>
-          <span className="font-bold text-lg hidden md:block">
+          <span className="font-black text-xl hidden md:block uppercase">
             Nirvana Tech
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
           <Link
             to="/"
-            className="text-sm hover:text-primary transition-colors"
+            className="text-sm font-black uppercase tracking-wider hover:text-primary transition-colors"
           >
             Home
           </Link>
           <Link
             to="/projects"
-            className="text-sm hover:text-primary transition-colors"
+            className="text-sm font-black uppercase tracking-wider hover:text-primary transition-colors"
           >
-            Our Projects
+            Projects
           </Link>
           <Link
             to="/contact"
-            className="text-sm hover:text-primary transition-colors"
+            className="text-sm font-black uppercase tracking-wider hover:text-primary transition-colors"
           >
-            Contact Us
+            Contact
           </Link>
         </div>
 
@@ -81,7 +81,7 @@ export function Navbar() {
             <Link to="/admin">
               <Button
                 variant="outline"
-                className="rounded-full glass border-primary/30"
+                className="glass border-4 border-black font-black uppercase"
               >
                 Dashboard
               </Button>
@@ -90,14 +90,14 @@ export function Navbar() {
           {user ? (
             <>
               <Link to="/book-call">
-                <Button className="rounded-full bg-primary hover:bg-primary/90 glow-cyan text-black">
-                  Book a Call
+                <Button className="bg-primary hover:bg-primary/90 text-black border-4 border-black font-black uppercase shadow-[4px_4px_0_0_#000]">
+                  Book Call
                 </Button>
               </Link>
               <Button
                 variant="ghost"
                 onClick={handleSignOut}
-                className="rounded-full"
+                className="font-black uppercase"
               >
                 Sign Out
               </Button>
@@ -106,7 +106,7 @@ export function Navbar() {
             <Link to="/auth">
               <Button
                 variant="outline"
-                className="rounded-full glass border-primary/30"
+                className="glass border-4 border-black font-black uppercase"
               >
                 Login
               </Button>
@@ -128,7 +128,7 @@ export function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden mt-2 glass-strong rounded-3xl p-6 space-y-4"
+          className="md:hidden mt-2 glass-strong p-6 space-y-4"
         >
           <Link
             to="/"
@@ -159,7 +159,7 @@ export function Navbar() {
               <Link to="/admin" onClick={() => setMobileMenuOpen(false)}>
                 <Button
                   variant="outline"
-                  className="w-full rounded-full glass border-primary/30"
+                  className="w-full glass border-4 border-black font-black uppercase"
                 >
                   Dashboard
                 </Button>
@@ -168,8 +168,8 @@ export function Navbar() {
             {user ? (
               <>
                 <Link to="/book-call" onClick={() => setMobileMenuOpen(false)}>
-                  <Button className="w-full rounded-full bg-primary hover:bg-primary/90 glow-cyan text-black">
-                    Book a Call
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-black border-4 border-black font-black uppercase shadow-[4px_4px_0_0_#000]">
+                    Book Call
                   </Button>
                 </Link>
                 <Button
@@ -178,7 +178,7 @@ export function Navbar() {
                     handleSignOut();
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full rounded-full"
+                  className="w-full font-black uppercase"
                 >
                   Sign Out
                 </Button>
@@ -187,7 +187,7 @@ export function Navbar() {
               <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>
                 <Button
                   variant="outline"
-                  className="w-full rounded-full glass border-primary/30"
+                  className="w-full glass border-4 border-black font-black uppercase"
                 >
                   Login
                 </Button>

@@ -42,85 +42,107 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* DARK GLASSMORPHISM THEME */
+/* NEO BRUTALISM THEME - DARK */
 :root {
-  --radius: 1rem;
-  /* Pure dark theme - black & charcoal with neon cyan accent */
-  --background: oklch(0.08 0 0); /* Almost black */
-  --foreground: oklch(0.98 0 0); /* Pure white */
-  --card: oklch(0.12 0 0 / 40%); /* Dark charcoal with transparency */
+  --radius: 0px; /* Sharp corners for brutalism */
+  /* Bold dark theme - pure colors with high contrast */
+  --background: oklch(0.15 0 0); /* Dark charcoal background */
+  --foreground: oklch(0.98 0 0); /* Pure white text */
+  --card: oklch(0.20 0 0); /* Solid dark cards */
   --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.12 0 0 / 95%);
+  --popover: oklch(0.18 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.75 0.15 195); /* Neon cyan */
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.18 0 0 / 50%);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.15 0 0 / 50%);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.75 0.15 195); /* Neon cyan */
-  --accent-foreground: oklch(0.08 0 0);
-  --destructive: oklch(0.65 0.25 25);
-  --border: oklch(1 0 0 / 8%); /* Subtle glass border */
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.75 0.15 195); /* Neon cyan ring */
-  --chart-1: oklch(0.75 0.15 195);
-  --chart-2: oklch(0.70 0.18 280);
-  --chart-3: oklch(0.68 0.20 320);
-  --chart-4: oklch(0.72 0.16 160);
-  --chart-5: oklch(0.74 0.17 220);
+  --primary: oklch(0.85 0.20 140); /* Bright neon green */
+  --primary-foreground: oklch(0.10 0 0);
+  --secondary: oklch(0.85 0.25 280); /* Electric purple */
+  --secondary-foreground: oklch(0.10 0 0);
+  --muted: oklch(0.30 0 0);
+  --muted-foreground: oklch(0.70 0 0);
+  --accent: oklch(0.90 0.30 60); /* Hot yellow */
+  --accent-foreground: oklch(0.10 0 0);
+  --destructive: oklch(0.85 0.30 25); /* Bright red */
+  --border: oklch(0.10 0 0); /* Thick black borders */
+  --input: oklch(0.25 0 0);
+  --ring: oklch(0.85 0.20 140);
+  --chart-1: oklch(0.85 0.20 140); /* Neon green */
+  --chart-2: oklch(0.85 0.25 280); /* Electric purple */
+  --chart-3: oklch(0.90 0.30 60); /* Hot yellow */
+  --chart-4: oklch(0.85 0.30 200); /* Bright cyan */
+  --chart-5: oklch(0.85 0.25 340); /* Hot pink */
 }
 
-/* LIGHT GLASSMORPHISM THEME */
+/* NEO BRUTALISM THEME - LIGHT */
 .light {
-  --background: oklch(0.98 0 0); /* Off-white */
-  --foreground: oklch(0.12 0 0); /* Dark charcoal */
-  --card: oklch(0.97 0 0 / 60%); /* Light with transparency */
-  --card-foreground: oklch(0.12 0 0);
-  --popover: oklch(0.98 0 0 / 95%);
-  --popover-foreground: oklch(0.12 0 0);
-  --primary: oklch(0.55 0.20 195); /* Darker cyan for light mode */
+  --background: oklch(0.97 0 0); /* Off-white background */
+  --foreground: oklch(0.10 0 0); /* Black text */
+  --card: oklch(1.00 0 0); /* Pure white cards */
+  --card-foreground: oklch(0.10 0 0);
+  --popover: oklch(0.98 0 0);
+  --popover-foreground: oklch(0.10 0 0);
+  --primary: oklch(0.60 0.25 140); /* Bold green */
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.92 0 0 / 50%);
-  --secondary-foreground: oklch(0.12 0 0);
-  --muted: oklch(0.94 0 0 / 50%);
-  --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.55 0.20 195);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.55 0.25 25);
-  --border: oklch(0 0 0 / 12%);
-  --input: oklch(0 0 0 / 15%);
-  --ring: oklch(0.55 0.20 195);
-  --chart-1: oklch(0.55 0.20 195);
-  --chart-2: oklch(0.60 0.18 280);
-  --chart-3: oklch(0.58 0.20 320);
-  --chart-4: oklch(0.62 0.16 160);
-  --chart-5: oklch(0.64 0.17 220);
+  --secondary: oklch(0.65 0.25 280); /* Bold purple */
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.88 0 0);
+  --muted-foreground: oklch(0.40 0 0);
+  --accent: oklch(0.75 0.30 60); /* Bold yellow */
+  --accent-foreground: oklch(0.10 0 0);
+  --destructive: oklch(0.65 0.30 25); /* Bold red */
+  --border: oklch(0.10 0 0); /* Thick black borders */
+  --input: oklch(0.95 0 0);
+  --ring: oklch(0.60 0.25 140);
+  --chart-1: oklch(0.60 0.25 140);
+  --chart-2: oklch(0.65 0.25 280);
+  --chart-3: oklch(0.75 0.30 60);
+  --chart-4: oklch(0.60 0.30 200);
+  --chart-5: oklch(0.65 0.25 340);
 }
 
-/* Glass effect utilities */
+/* Neo Brutalism utilities - NO GLASS EFFECTS */
 .glass {
-  background: oklch(0.12 0 0 / 30%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid oklch(1 0 0 / 10%);
+  background: oklch(0.20 0 0);
+  border: 4px solid oklch(0.10 0 0);
+  box-shadow: 8px 8px 0 oklch(0.10 0 0);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 oklch(0.10 0 0);
 }
 
 .light .glass {
-  background: oklch(0.98 0 0 / 40%);
-  border: 1px solid oklch(0 0 0 / 15%);
+  background: oklch(1.00 0 0);
+  border: 4px solid oklch(0.10 0 0);
+  box-shadow: 8px 8px 0 oklch(0.10 0 0);
+}
+
+.light .glass:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 oklch(0.10 0 0);
 }
 
 .glass-strong {
-  background: oklch(0.12 0 0 / 50%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid oklch(1 0 0 / 15%);
+  background: oklch(0.25 0 0);
+  border: 5px solid oklch(0.10 0 0);
+  box-shadow: 10px 10px 0 oklch(0.10 0 0);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-strong:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 12px 12px 0 oklch(0.10 0 0);
 }
 
 .light .glass-strong {
-  background: oklch(0.97 0 0 / 70%);
-  border: 1px solid oklch(0 0 0 / 20%);
+  background: oklch(0.98 0 0);
+  border: 5px solid oklch(0.10 0 0);
+  box-shadow: 10px 10px 0 oklch(0.10 0 0);
+}
+
+.light .glass-strong:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 12px 12px 0 oklch(0.10 0 0);
 }
 
 @layer base {
@@ -130,100 +152,128 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
+    font-weight: 700; /* Bold text for brutalism */
   }
   button:not([disabled]),
   [role="button"]:not([disabled]) {
     cursor: pointer;
+    font-weight: 900; /* Extra bold buttons */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 0.05em;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 900; /* Black weight for headings */
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 }
 
-/* Custom Glass Cursor Effect */
+/* Neo Brutalism Cursor - Square shapes */
 .custom-cursor {
   cursor: none;
 }
 
 .cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: oklch(0.75 0.15 195);
-  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background: oklch(0.85 0.20 140); /* Neon green */
+  border: 2px solid oklch(0.10 0 0);
+  border-radius: 0; /* Square, not circle */
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: screen;
-  transition: transform 0.15s ease-out;
+  mix-blend-mode: normal;
+  transition: transform 0.1s ease-out;
 }
 
 .light .cursor-dot {
-  background: oklch(0.55 0.20 195);
-  mix-blend-mode: multiply;
+  background: oklch(0.60 0.25 140);
+  border: 2px solid oklch(0.10 0 0);
+  mix-blend-mode: normal;
 }
 
 .cursor-outline {
   width: 32px;
   height: 32px;
-  border: 2px solid oklch(0.75 0.15 195 / 50%);
-  border-radius: 50%;
+  border: 3px solid oklch(0.85 0.20 140);
+  border-radius: 0; /* Square, not circle */
   position: fixed;
   pointer-events: none;
   z-index: 9998;
-  backdrop-filter: blur(4px);
-  transition: all 0.2s ease-out;
+  backdrop-filter: none;
+  transition: all 0.15s ease-out;
 }
 
 .light .cursor-outline {
-  border-color: oklch(0.55 0.20 195 / 50%);
+  border: 3px solid oklch(0.60 0.25 140);
 }
 
-/* Scrollbar styling */
+/* Neo Brutalism Scrollbar - Thick and bold */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 16px;
 }
 
 ::-webkit-scrollbar-track {
-  background: oklch(0.1 0 0);
+  background: oklch(0.15 0 0);
+  border: 2px solid oklch(0.10 0 0);
 }
 
 .light ::-webkit-scrollbar-track {
-  background: oklch(0.94 0 0);
+  background: oklch(0.97 0 0);
+  border: 2px solid oklch(0.10 0 0);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.75 0.15 195 / 40%);
-  border-radius: 4px;
+  background: oklch(0.85 0.20 140);
+  border: 3px solid oklch(0.10 0 0);
+  border-radius: 0;
 }
 
 .light ::-webkit-scrollbar-thumb {
-  background: oklch(0.55 0.20 195 / 40%);
+  background: oklch(0.60 0.25 140);
+  border: 3px solid oklch(0.10 0 0);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.75 0.15 195 / 60%);
+  background: oklch(0.90 0.30 60); /* Yellow on hover */
 }
 
 .light ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.55 0.20 195 / 60%);
+  background: oklch(0.75 0.30 60);
 }
 
-/* Glow effects */
+/* Neo Brutalism Effects - NO GLOW, HARD SHADOWS */
 .glow-cyan {
-  box-shadow: 0 0 20px oklch(0.75 0.15 195 / 30%),
-              0 0 40px oklch(0.75 0.15 195 / 15%);
+  box-shadow: 6px 6px 0 oklch(0.85 0.20 140);
+  border: 4px solid oklch(0.10 0 0);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-cyan:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 oklch(0.85 0.20 140);
 }
 
 .glow-cyan-strong {
-  box-shadow: 0 0 30px oklch(0.75 0.15 195 / 50%),
-              0 0 60px oklch(0.75 0.15 195 / 25%);
+  box-shadow: 8px 8px 0 oklch(0.90 0.30 60);
+  border: 5px solid oklch(0.10 0 0);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Glass card hover effect */
+.glow-cyan-strong:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 11px 0 oklch(0.90 0.30 60);
+}
+
+/* Brutalist card hover effect */
 .glass-card {
-  transition: all 0.3s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 4px solid oklch(0.10 0 0);
+  box-shadow: 6px 6px 0 oklch(0.10 0 0);
 }
 
 .glass-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 30px oklch(0.75 0.15 195 / 20%),
-              0 8px 32px oklch(0 0 0 / 40%);
-  border-color: oklch(0.75 0.15 195 / 30%);
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 oklch(0.10 0 0);
+  border-color: oklch(0.85 0.20 140);
 }
