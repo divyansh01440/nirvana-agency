@@ -75,6 +75,8 @@ export default function AdminDashboard() {
 
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [selectedBooking, setSelectedBooking] = useState<any>(null);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [projectToDelete, setProjectToDelete] = useState<string | null>(null);
 
   if (!user) {
     navigate("/auth");
@@ -133,15 +135,23 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleProjectDelete = async (projectId: string) => {
-    if (confirm("Are you sure you want to delete this project?")) {
-      try {
-        await deleteProject({ projectId: projectId as any });
-        toast.success("Project deleted");
-      } catch (error) {
-        toast.error("Failed to delete project");
-      }
+  const handleProjectDelete = async () => {
+    if (!projectToDelete) return;
+
+    try {
+      await deleteProject({ projectId: projectToDelete as any });
+      toast.success("Project deleted successfully");
+      setDeleteDialogOpen(false);
+      setProjectToDelete(null);
+    } catch (error) {
+      toast.error("Failed to delete project");
+      console.error(error);
     }
+  };
+
+  const openDeleteDialog = (projectId: string) => {
+    setProjectToDelete(projectId);
+    setDeleteDialogOpen(true);
   };
 
   const filteredBookings = bookings?.filter((booking) =>
@@ -639,7 +649,7 @@ export default function AdminDashboard() {
                         variant="destructive"
                         size="sm"
                         className="w-full"
-                        onClick={() => handleProjectDelete(project._id)}
+                        onClick={() => openDeleteDialog(project._id)}
                       >
                         <Trash2 size={14} className="mr-2" />
                         Delete
@@ -656,6 +666,38 @@ export default function AdminDashboard() {
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <DialogContent className="glass-strong">
+          <DialogHeader>
+            <DialogTitle>Delete Project</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <p className="text-muted-foreground">
+              Are you sure you want to delete this project? This action cannot be undone.
+            </p>
+            <div className="flex gap-3 justify-end">
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setDeleteDialogOpen(false);
+                  setProjectToDelete(null);
+                }}
+                className="glass"
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="destructive"
+                onClick={handleProjectDelete}
+              >
+                Delete Project
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
