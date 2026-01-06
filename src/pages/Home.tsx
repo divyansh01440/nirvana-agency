@@ -170,18 +170,22 @@ export default function Home() {
           initial={{ opacity: 0, y: 50 }}
           animate={aboutInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Who We Are</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            <span className="font-semibold text-primary">
-              Nirvana Tech Solutions
-            </span>{" "}
-            is a modern technology agency focused on helping small ventures
-            scale from local markets to global presence. We combine innovative
-            technology with strategic thinking to deliver solutions that drive
-            real business growth.
-          </p>
+          <Card className="glass-strong p-8 md:p-12 border-4 border-primary shadow-[12px_12px_0_0] shadow-primary">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 text-center uppercase">
+              Who We Are
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-center leading-relaxed">
+              <span className="font-black text-primary text-xl">
+                Nirvana Tech Solutions
+              </span>{" "}
+              is a modern technology agency focused on helping small ventures
+              scale from local markets to global presence. We combine innovative
+              technology with strategic thinking to deliver solutions that drive
+              real business growth.
+            </p>
+          </Card>
         </motion.div>
       </section>
 
