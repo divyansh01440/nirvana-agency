@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -82,42 +82,6 @@ export function Footer() {
                 <span>Garha, Jabalpur, Madhya Pradesh</span>
               </li>
             </ul>
-
-            {/* Social Links */}
-            <div className="flex space-x-4 mt-6">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 glass-strong flex items-center justify-center hover:bg-primary hover:text-black transition-all border-4 border-black"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 glass-strong flex items-center justify-center hover:bg-primary hover:text-black transition-all border-4 border-black"
-              >
-                <Twitter size={18} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 glass-strong flex items-center justify-center hover:bg-primary hover:text-black transition-all border-4 border-black"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a
-                href="https://www.instagram.com/nirvanatechsol?igsh=cmNndWE2MTZ5Z2pv"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 glass-strong flex items-center justify-center hover:bg-primary hover:text-black transition-all border-4 border-black"
-              >
-                <Instagram size={18} />
-              </a>
-            </div>
           </div>
         </div>
 
