@@ -1,4 +1,4 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -6,6 +6,7 @@ import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Hero3DWrapper } from "@/components/Hero3DWrapper";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -20,13 +21,6 @@ import {
   Shield,
   Star,
 } from "lucide-react";
-
-// Lazy load the heavy 3D component
-const Hero3D = lazy(() =>
-  import("@/components/Hero3D").then((module) => ({
-    default: module.Hero3D,
-  }))
-);
 
 export default function Home() {
   const trackPageView = useMutation(api.analytics.trackPageView);
@@ -114,9 +108,7 @@ export default function Home() {
         className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24"
       >
         <div className="absolute inset-0 opacity-30">
-          <Suspense fallback={<div className="w-full h-full" />}>
-            <Hero3D />
-          </Suspense>
+          <Hero3DWrapper />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
