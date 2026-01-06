@@ -30,14 +30,76 @@ const schema = defineSchema(
       isAnonymous: v.optional(v.boolean()), // is the user anonymous. do not remove
 
       role: v.optional(roleValidator), // role of the user. do not remove
+      phone: v.optional(v.string()), // phone number for bookings
     }).index("email", ["email"]), // index for the email. do not remove or modify
 
-    // add other tables here
+    // Bookings table - stores user booking requests
+    bookings: defineTable({
+      userId: v.id("users"),
+      companyName: v.string(),
+      email: v.string(),
+      service: v.union(
+        v.literal("Business Automation"),
+        v.literal("E-Commerce Website"),
+        v.literal("SEO"),
+        v.literal("Creative Web Development"),
+        v.literal("Meta Ads Marketing"),
+        v.literal("Custom Tech Solution")
+      ),
+      contactNumber: v.string(),
+      alternativeContactNumber: v.optional(v.string()),
+      state: v.string(),
+      city: v.string(),
+      address: v.string(),
+      pincode: v.string(),
+      status: v.union(
+        v.literal("Pending"),
+        v.literal("Attended"),
+        v.literal("Not Attended"),
+        v.literal("Not Sure"),
+        v.literal("Purchased Service"),
+        v.literal("Not Interested")
+      ),
+    })
+      .index("by_user", ["userId"])
+      .index("by_status", ["status"]),
 
-    // tableName: defineTable({
-    //   ...
-    //   // table fields
-    // }).index("by_field", ["field"])
+    // Projects table - managed by admin, displayed to users
+    projects: defineTable({
+      name: v.string(),
+      thumbnailUrl: v.string(),
+      liveUrl: v.string(),
+      description: v.string(),
+    }),
+
+    // Queries/Contact messages
+    queries: defineTable({
+      userId: v.optional(v.id("users")),
+      name: v.string(),
+      email: v.string(),
+      message: v.string(),
+      status: v.union(v.literal("pending"), v.literal("resolved")),
+    })
+      .index("by_status", ["status"])
+      .index("by_user", ["userId"]),
+
+    // Reviews & Ratings - only from users who purchased services
+    reviews: defineTable({
+      userId: v.id("users"),
+      bookingId: v.id("bookings"),
+      rating: v.number(), // 1-5
+      feedback: v.string(),
+      approved: v.boolean(),
+    })
+      .index("by_user", ["userId"])
+      .index("by_approved", ["approved"]),
+
+    // Analytics/Traffic tracking
+    analytics: defineTable({
+      date: v.string(), // YYYY-MM-DD format
+      visitors: v.number(),
+      pageViews: v.number(),
+    }).index("by_date", ["date"]),
   },
   {
     schemaValidation: false,

@@ -6,12 +6,17 @@ import { ConvexReactClient } from "convex/react";
 import { StrictMode, useEffect, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
+import { CustomCursor } from "@/components/CustomCursor";
 import "./index.css";
 import "./types/global.d.ts";
 
 // Lazy load route components for better code splitting
-const Landing = lazy(() => import("./pages/Landing.tsx"));
+const Home = lazy(() => import("./pages/Home.tsx"));
 const AuthPage = lazy(() => import("./pages/Auth.tsx"));
+const BookCall = lazy(() => import("./pages/BookCall.tsx"));
+const Projects = lazy(() => import("./pages/Projects.tsx"));
+const Contact = lazy(() => import("./pages/Contact.tsx"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 // Simple loading fallback for route transitions
@@ -57,11 +62,16 @@ createRoot(document.getElementById("root")!).render(
     <InstrumentationProvider>
       <ConvexAuthProvider client={convex}>
         <BrowserRouter>
+          <CustomCursor />
           <RouteSyncer />
           <Suspense fallback={<RouteLoading />}>
             <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} /> {/* TODO: change redirect after auth to correct page */}
+              <Route path="/" element={<Home />} />
+              <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
+              <Route path="/book-call" element={<BookCall />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/admin" element={<AdminDashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
