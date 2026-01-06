@@ -67,19 +67,31 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Get in Touch</h3>
             <ul className="space-y-3">
-              <li className="flex items-center space-x-2 text-sm text-muted-foreground">
-                <Mail size={16} className="text-primary" />
-                <a href="mailto:nirvanatech07@gmail.com" className="hover:text-primary transition-colors">
-                  nirvanatech07@gmail.com
-                </a>
+              <li className="flex items-start space-x-2 text-sm text-muted-foreground">
+                <Mail size={16} className="text-primary mt-0.5" />
+                <div className="flex flex-col space-y-1">
+                  <a href="mailto:info@nirvanatech.com" className="hover:text-primary transition-colors">
+                    info@nirvanatech.com
+                  </a>
+                  <a href="mailto:support@nirvanatech.com" className="hover:text-primary transition-colors">
+                    support@nirvanatech.com
+                  </a>
+                </div>
               </li>
-              <li className="flex items-center space-x-2 text-sm text-muted-foreground">
-                <Phone size={16} className="text-primary" />
-                <span>+1 (555) 123-4567</span>
+              <li className="flex items-start space-x-2 text-sm text-muted-foreground">
+                <Phone size={16} className="text-primary mt-0.5" />
+                <div className="flex flex-col space-y-1">
+                  <span>+1 (555) 123-4567</span>
+                  <span>+1 (555) 987-6543</span>
+                </div>
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin size={16} className="text-primary mt-0.5" />
-                <span>Garha, Jabalpur, Madhya Pradesh</span>
+                <div className="flex flex-col">
+                  <span>123 Tech Street</span>
+                  <span>Silicon Valley, CA 94000</span>
+                  <span>United States</span>
+                </div>
               </li>
             </ul>
           </div>
