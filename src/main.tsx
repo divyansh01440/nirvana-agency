@@ -1,3 +1,4 @@
+// Nirvana Tech Solutions - Main Entry Point
 import { Toaster } from "@/components/ui/sonner";
 import { VlyToolbar } from "../vly-toolbar-readonly.tsx";
 import { InstrumentationProvider } from "@/instrumentation.tsx";
@@ -10,7 +11,7 @@ import { CustomCursor } from "@/components/CustomCursor";
 import "./index.css";
 import "./types/global.d.ts";
 
-// Lazy load route components for better code splitting
+// Lazy load route components (NO file extensions for production compatibility)
 const Home = lazy(() => import("./pages/Home"));
 const AuthPage = lazy(() => import("./pages/Auth"));
 const BookCall = lazy(() => import("./pages/BookCall"));
