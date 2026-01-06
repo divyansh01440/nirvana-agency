@@ -4,6 +4,7 @@ import { useAuthActions } from "@convex-dev/auth/react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -75,6 +76,7 @@ export function Navbar() {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center space-x-4">
+          <ThemeToggle />
           {user?.role === "admin" && (
             <Link to="/admin">
               <Button
@@ -150,6 +152,9 @@ export function Navbar() {
             Contact Us
           </Link>
           <div className="pt-4 border-t border-white/10 space-y-2">
+            <div className="flex justify-center pb-2">
+              <ThemeToggle />
+            </div>
             {user?.role === "admin" && (
               <Link to="/admin" onClick={() => setMobileMenuOpen(false)}>
                 <Button

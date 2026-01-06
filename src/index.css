@@ -71,6 +71,33 @@
   --chart-5: oklch(0.74 0.17 220);
 }
 
+/* LIGHT GLASSMORPHISM THEME */
+.light {
+  --background: oklch(0.98 0 0); /* Off-white */
+  --foreground: oklch(0.12 0 0); /* Dark charcoal */
+  --card: oklch(0.97 0 0 / 60%); /* Light with transparency */
+  --card-foreground: oklch(0.12 0 0);
+  --popover: oklch(0.98 0 0 / 95%);
+  --popover-foreground: oklch(0.12 0 0);
+  --primary: oklch(0.55 0.20 195); /* Darker cyan for light mode */
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.92 0 0 / 50%);
+  --secondary-foreground: oklch(0.12 0 0);
+  --muted: oklch(0.94 0 0 / 50%);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.55 0.20 195);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.55 0.25 25);
+  --border: oklch(0 0 0 / 12%);
+  --input: oklch(0 0 0 / 15%);
+  --ring: oklch(0.55 0.20 195);
+  --chart-1: oklch(0.55 0.20 195);
+  --chart-2: oklch(0.60 0.18 280);
+  --chart-3: oklch(0.58 0.20 320);
+  --chart-4: oklch(0.62 0.16 160);
+  --chart-5: oklch(0.64 0.17 220);
+}
+
 /* Glass effect utilities */
 .glass {
   background: oklch(0.12 0 0 / 30%);
@@ -79,11 +106,21 @@
   border: 1px solid oklch(1 0 0 / 10%);
 }
 
+.light .glass {
+  background: oklch(0.98 0 0 / 40%);
+  border: 1px solid oklch(0 0 0 / 15%);
+}
+
 .glass-strong {
   background: oklch(0.12 0 0 / 50%);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid oklch(1 0 0 / 15%);
+}
+
+.light .glass-strong {
+  background: oklch(0.97 0 0 / 70%);
+  border: 1px solid oklch(0 0 0 / 20%);
 }
 
 @layer base {
@@ -117,6 +154,11 @@
   transition: transform 0.15s ease-out;
 }
 
+.light .cursor-dot {
+  background: oklch(0.55 0.20 195);
+  mix-blend-mode: multiply;
+}
+
 .cursor-outline {
   width: 32px;
   height: 32px;
@@ -129,6 +171,10 @@
   transition: all 0.2s ease-out;
 }
 
+.light .cursor-outline {
+  border-color: oklch(0.55 0.20 195 / 50%);
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
@@ -138,13 +184,25 @@
   background: oklch(0.1 0 0);
 }
 
+.light ::-webkit-scrollbar-track {
+  background: oklch(0.94 0 0);
+}
+
 ::-webkit-scrollbar-thumb {
   background: oklch(0.75 0.15 195 / 40%);
   border-radius: 4px;
 }
 
+.light ::-webkit-scrollbar-thumb {
+  background: oklch(0.55 0.20 195 / 40%);
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.75 0.15 195 / 60%);
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.55 0.20 195 / 60%);
 }
 
 /* Glow effects */

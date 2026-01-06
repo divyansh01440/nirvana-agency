@@ -36,8 +36,10 @@ Go to: https://two-hotels-strive.vly.sh/admin
 ## 🎨 What You Have
 
 ### Frontend
-- ✅ Dark glassmorphism theme
-- ✅ Custom glass cursor
+- ✅ Dark/Light theme switcher
+- ✅ Dark glassmorphism theme (default)
+- ✅ Light glassmorphism theme
+- ✅ Custom glass cursor (adapts to theme)
 - ✅ Animated gradient hero
 - ✅ Mobile responsive
 - ✅ Smooth animations (Framer Motion)

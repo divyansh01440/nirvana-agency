@@ -8,6 +8,7 @@ import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import { CustomCursor } from "@/components/CustomCursor";
+import { ThemeProvider } from "@/hooks/use-theme";
 import "./index.css";
 import "./types/global.d.ts";
 
@@ -53,20 +54,22 @@ createRoot(document.getElementById("root")!).render(
     <VlyToolbar />
     <InstrumentationProvider>
       <ConvexAuthProvider client={convex}>
-        <BrowserRouter>
-          <CustomCursor />
-          <RouteSyncer />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
-            <Route path="/book-call" element={<BookCall />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-        <Toaster />
+        <ThemeProvider>
+          <BrowserRouter>
+            <CustomCursor />
+            <RouteSyncer />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
+              <Route path="/book-call" element={<BookCall />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+          <Toaster />
+        </ThemeProvider>
       </ConvexAuthProvider>
     </InstrumentationProvider>
   </StrictMode>,
