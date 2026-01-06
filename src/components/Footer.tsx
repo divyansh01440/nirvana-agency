@@ -10,11 +10,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 rounded-full bg-primary glow-cyan flex items-center justify-center">
-                <span className="text-black font-bold">N</span>
-              </div>
-              <span className="font-bold text-xl">Nirvana Tech</span>
+            <div className="flex items-center space-x-3">
+              <img
+                src="https://harmless-tapir-303.convex.cloud/api/storage/779a82d1-7f12-47d3-8366-6de246739ec6"
+                alt="Nirvana Tech Solutions"
+                className="h-10 w-auto"
+              />
+              <span className="font-black text-xl uppercase">Nirvana Tech</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Building scalable tech solutions for growing businesses. From local ventures to global presence.
@@ -67,7 +69,9 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Mail size={16} className="text-primary" />
-                <span>info@nirvanatech.com</span>
+                <a href="mailto:nirvanatech07@gmail.com" className="hover:text-primary transition-colors">
+                  nirvanatech07@gmail.com
+                </a>
               </li>
               <li className="flex items-center space-x-2 text-sm text-muted-foreground">
                 <Phone size={16} className="text-primary" />
