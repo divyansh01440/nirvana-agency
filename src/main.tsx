@@ -11,13 +11,13 @@ import "./index.css";
 import "./types/global.d.ts";
 
 // Lazy load route components for better code splitting
-const Home = lazy(() => import("./pages/Home.tsx"));
-const AuthPage = lazy(() => import("./pages/Auth.tsx"));
-const BookCall = lazy(() => import("./pages/BookCall.tsx"));
-const Projects = lazy(() => import("./pages/Projects.tsx"));
-const Contact = lazy(() => import("./pages/Contact.tsx"));
-const AdminDashboard = lazy(() => import("./pages/AdminDashboard.tsx"));
-const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+const Home = lazy(() => import("./pages/Home"));
+const AuthPage = lazy(() => import("./pages/Auth"));
+const BookCall = lazy(() => import("./pages/BookCall"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Contact = lazy(() => import("./pages/Contact"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Simple loading fallback for route transitions
 function RouteLoading() {
