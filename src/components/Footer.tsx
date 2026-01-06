@@ -89,33 +89,33 @@ export function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full glass-strong flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className="w-10 h-10 glass-strong flex items-center justify-center hover:bg-primary hover:text-black transition-all border-4 border-black"
               >
-                <Facebook size={16} />
+                <Facebook size={18} />
               </a>
               <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full glass-strong flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className="w-10 h-10 glass-strong flex items-center justify-center hover:bg-primary hover:text-black transition-all border-4 border-black"
               >
-                <Twitter size={16} />
+                <Twitter size={18} />
               </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full glass-strong flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className="w-10 h-10 glass-strong flex items-center justify-center hover:bg-primary hover:text-black transition-all border-4 border-black"
               >
-                <Linkedin size={16} />
+                <Linkedin size={18} />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/nirvanatechsol?igsh=cmNndWE2MTZ5Z2pv"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full glass-strong flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className="w-10 h-10 glass-strong flex items-center justify-center hover:bg-primary hover:text-black transition-all border-4 border-black"
               >
-                <Instagram size={16} />
+                <Instagram size={18} />
               </a>
             </div>
           </div>
