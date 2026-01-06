@@ -79,7 +79,7 @@ export function Footer() {
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <MapPin size={16} className="text-primary mt-0.5" />
-                <span>123 Tech Street, Silicon Valley, CA 94000</span>
+                <span>Garha, Jabalpur, Madhya Pradesh</span>
               </li>
             </ul>
 
