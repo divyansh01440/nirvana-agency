@@ -117,30 +117,30 @@ export default function Home() {
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-4xl md:text-7xl font-bold mb-6 px-4">
               Building{" "}
               <span className="text-primary glow-cyan-strong">Scalable</span>
               <br />
               Tech Solutions
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+            <p className="text-lg md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto px-4">
               Helping small ventures grow from local markets to global presence
               with cutting-edge technology
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/book-call">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+              <Link to="/book-call" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="rounded-full bg-primary hover:bg-primary/90 glow-cyan text-black text-lg px-8"
+                  className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/90 glow-cyan text-black text-base md:text-lg px-6 md:px-8"
                 >
                   Book a Call
                 </Button>
               </Link>
-              <Link to="/projects">
+              <Link to="/projects" className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full glass border-primary/30 text-lg px-8"
+                  className="w-full sm:w-auto rounded-full glass border-primary/30 text-base md:text-lg px-6 md:px-8"
                 >
                   View Projects
                 </Button>
@@ -172,12 +172,12 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <Card className="glass-strong p-8 md:p-12 border-4 border-primary shadow-[12px_12px_0_0] shadow-primary">
-            <h2 className="text-4xl md:text-5xl font-black mb-6 text-center uppercase">
+          <Card className="glass-strong p-6 md:p-12 border-3 md:border-4 border-primary shadow-[6px_6px_0_0] md:shadow-[12px_12px_0_0] shadow-primary">
+            <h2 className="text-3xl md:text-5xl font-black mb-4 md:mb-6 text-center uppercase">
               Who We Are
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-center leading-relaxed">
-              <span className="font-black text-primary text-xl">
+            <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto text-center leading-relaxed">
+              <span className="font-black text-primary text-lg md:text-xl">
                 Nirvana Tech Solutions
               </span>{" "}
               is a modern technology agency focused on helping small ventures
@@ -334,18 +334,18 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
-        <div className="glass-strong rounded-3xl p-12 glow-cyan">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <div className="glass-strong rounded-none md:rounded-3xl p-6 md:p-12 glow-cyan">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
             Ready to Scale Your Business?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto">
             Book a free consultation call and let's discuss how we can help you
             achieve your business goals.
           </p>
-          <Link to="/book-call">
+          <Link to="/book-call" className="inline-block w-full sm:w-auto">
             <Button
               size="lg"
-              className="rounded-full bg-primary hover:bg-primary/90 text-black text-lg px-8"
+              className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/90 text-black text-base md:text-lg px-6 md:px-8"
             >
               Schedule Your Free Call
             </Button>

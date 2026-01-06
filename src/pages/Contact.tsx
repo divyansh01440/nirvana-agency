@@ -53,18 +53,18 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">
+          <h1 className="text-3xl md:text-6xl font-bold mb-4 text-center px-4">
             Get in <span className="text-primary glow-cyan-strong">Touch</span>
           </h1>
-          <p className="text-muted-foreground text-center mb-12">
+          <p className="text-sm md:text-base text-muted-foreground text-center mb-8 md:mb-12 px-4">
             Have a question or want to discuss a project? We'd love to hear
             from you.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {/* Contact Form */}
-            <Card className="glass-strong p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <Card className="glass-strong p-6 md:p-8">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div>
                   <Label htmlFor="name">Name *</Label>
                   <Input
@@ -108,7 +108,7 @@ export default function Contact() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full rounded-full bg-primary hover:bg-primary/90 glow-cyan text-black text-lg h-12"
+                  className="w-full rounded-full bg-primary hover:bg-primary/90 glow-cyan text-black text-base md:text-lg h-11 md:h-12"
                 >
                   {loading ? "Sending..." : "Send Message"}
                 </Button>
@@ -116,51 +116,51 @@ export default function Contact() {
             </Card>
 
             {/* Contact Info */}
-            <div className="space-y-6">
-              <Card className="glass-card glass-strong p-6">
+            <div className="space-y-4 md:space-y-6">
+              <Card className="glass-card glass-strong p-4 md:p-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-                    <a href="mailto:nirvanatech07@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <h3 className="font-semibold text-base md:text-lg mb-2">Email Us</h3>
+                    <a href="mailto:nirvanatech07@gmail.com" className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors break-all">
                       nirvanatech07@gmail.com
                     </a>
                   </div>
                 </div>
               </Card>
 
-              <Card className="glass-card glass-strong p-6">
+              <Card className="glass-card glass-strong p-4 md:p-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-2">Call Us</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                    <p className="text-muted-foreground">+1 (555) 987-6543</p>
+                    <h3 className="font-semibold text-base md:text-lg mb-2">Call Us</h3>
+                    <p className="text-sm md:text-base text-muted-foreground">+1 (555) 123-4567</p>
+                    <p className="text-sm md:text-base text-muted-foreground">+1 (555) 987-6543</p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="glass-card glass-strong p-6">
+              <Card className="glass-card glass-strong p-4 md:p-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-2">Visit Us</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="font-semibold text-base md:text-lg mb-2">Visit Us</h3>
+                    <p className="text-sm md:text-base text-muted-foreground">
                       Garha, Jabalpur, M.P, INDIA
                     </p>
                   </div>
                 </div>
               </Card>
 
-              <Card className="glass-card glass-strong p-6 bg-primary/10">
-                <h3 className="font-semibold text-lg mb-2">Business Hours</h3>
-                <div className="space-y-1 text-muted-foreground">
+              <Card className="glass-card glass-strong p-4 md:p-6 bg-primary/10">
+                <h3 className="font-semibold text-base md:text-lg mb-2">Business Hours</h3>
+                <div className="space-y-1 text-sm md:text-base text-muted-foreground">
                   <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                   <p>Saturday: 10:00 AM - 4:00 PM</p>
                   <p>Sunday: Closed</p>
