@@ -4,30 +4,21 @@ import { VlyToolbar } from "../vly-toolbar-readonly.tsx";
 import { InstrumentationProvider } from "@/instrumentation.tsx";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
-import { StrictMode, useEffect, lazy, Suspense } from "react";
+import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import { CustomCursor } from "@/components/CustomCursor";
 import "./index.css";
 import "./types/global.d.ts";
 
-// Lazy load route components (NO file extensions for production compatibility)
-const Home = lazy(() => import("./pages/Home"));
-const AuthPage = lazy(() => import("./pages/Auth"));
-const BookCall = lazy(() => import("./pages/BookCall"));
-const Projects = lazy(() => import("./pages/Projects"));
-const Contact = lazy(() => import("./pages/Contact"));
-const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
-const NotFound = lazy(() => import("./pages/NotFound"));
-
-// Simple loading fallback for route transitions
-function RouteLoading() {
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-pulse text-muted-foreground">Loading...</div>
-    </div>
-  );
-}
+// Direct imports - no lazy loading to avoid Vly platform issues
+import Home from "./pages/Home";
+import AuthPage from "./pages/Auth";
+import BookCall from "./pages/BookCall";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
+import AdminDashboard from "./pages/AdminDashboard";
+import NotFound from "./pages/NotFound";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
@@ -65,17 +56,15 @@ createRoot(document.getElementById("root")!).render(
         <BrowserRouter>
           <CustomCursor />
           <RouteSyncer />
-          <Suspense fallback={<RouteLoading />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
-              <Route path="/book-call" element={<BookCall />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
+            <Route path="/book-call" element={<BookCall />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
         <Toaster />
       </ConvexAuthProvider>
