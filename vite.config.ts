@@ -76,9 +76,10 @@ export default defineConfig({
       'react-router',
       'convex',
       '@convex-dev/auth/react',
+      'three',
+      '@react-three/fiber',
+      '@react-three/drei',
     ],
-    // Exclude heavy optional dependencies for faster dev server start
-    exclude: ['three', '@react-three/fiber', '@react-three/drei'],
   },
   // Performance hints
   server: {
