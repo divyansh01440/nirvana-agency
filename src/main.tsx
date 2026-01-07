@@ -60,7 +60,7 @@ createRoot(document.getElementById("root")!).render(
             <RouteSyncer />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/auth" element={<AuthPage redirectAfterAuth="/" />} />
+              <Route path="/auth" element={<AuthPage />} />
               <Route path="/book-call" element={<BookCall />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />

@@ -31,7 +31,16 @@ const schema = defineSchema(
 
       role: v.optional(roleValidator), // role of the user. do not remove
       phone: v.optional(v.string()), // phone number for bookings
-    }).index("email", ["email"]), // index for the email. do not remove or modify
+
+      // Password-based auth fields
+      username: v.optional(v.string()), // unique username
+      passwordHint: v.optional(v.string()), // hint for password recovery
+      resetToken: v.optional(v.string()), // token for password reset
+      resetTokenExpiry: v.optional(v.number()), // expiry time for reset token
+    })
+      .index("email", ["email"]) // index for the email. do not remove or modify
+      .index("by_username", ["username"]) // index for username
+      .index("by_reset_token", ["resetToken"]), // index for reset token
 
     // Bookings table - stores user booking requests
     bookings: defineTable({
