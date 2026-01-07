@@ -89,3 +89,36 @@ export const deleteUser = mutation({
     };
   },
 });
+
+/**
+ * Create admin account with predefined credentials
+ * npx convex run adminSetup:createAdminAccount '{}'
+ */
+export const createAdminAccount = mutation({
+  args: {},
+  handler: async (ctx, args) => {
+    const adminEmail = "nirvanatech07@gmail.com";
+
+    // Check if admin already exists
+    const existingUser = await ctx.db
+      .query("users")
+      .withIndex("email", (q) => q.eq("email", adminEmail))
+      .first();
+
+    if (existingUser) {
+      return {
+        success: false,
+        message: `Admin account ${adminEmail} already exists. Please delete it first or login with existing credentials.`,
+        alreadyExists: true,
+      };
+    }
+
+    // Note: We cannot directly create a password-protected account from a mutation
+    // The user must use the signup form to create the account with password
+    return {
+      success: false,
+      message: "Please use the signup form at /auth to create the admin account with email: nirvanatech07@gmail.com and password: SalmanBhai..98",
+      needsSignup: true,
+    };
+  },
+});
