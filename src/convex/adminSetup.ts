@@ -61,3 +61,31 @@ export const checkAdmin = mutation({
     };
   },
 });
+
+/**
+ * Delete a user account by email (use carefully!)
+ * npx convex run adminSetup:deleteUser '{"email":"user@example.com"}'
+ */
+export const deleteUser = mutation({
+  args: {
+    email: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const user = await ctx.db
+      .query("users")
+      .withIndex("email", (q) => q.eq("email", args.email))
+      .first();
+
+    if (!user) {
+      throw new Error(`No user found with email: ${args.email}`);
+    }
+
+    // Delete the user
+    await ctx.db.delete(user._id);
+
+    return {
+      success: true,
+      message: `User ${args.email} has been deleted`,
+    };
+  },
+});
