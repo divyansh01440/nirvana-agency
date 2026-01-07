@@ -14,6 +14,7 @@ import type * as auth from "../auth.js";
 import type * as auth_emailOtp from "../auth/emailOtp.js";
 import type * as auth_password from "../auth/password.js";
 import type * as bookings from "../bookings.js";
+import type * as cleanupAuth from "../cleanupAuth.js";
 import type * as http from "../http.js";
 import type * as passwordReset from "../passwordReset.js";
 import type * as projects from "../projects.js";
@@ -35,6 +36,7 @@ declare const fullApi: ApiFromModules<{
   "auth/emailOtp": typeof auth_emailOtp;
   "auth/password": typeof auth_password;
   bookings: typeof bookings;
+  cleanupAuth: typeof cleanupAuth;
   http: typeof http;
   passwordReset: typeof passwordReset;
   projects: typeof projects;

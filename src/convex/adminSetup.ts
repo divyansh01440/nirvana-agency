@@ -63,6 +63,62 @@ export const checkAdmin = mutation({
 });
 
 /**
+ * Delete a user account and all auth sessions by email
+ * npx convex run adminSetup:deleteUserCompletely '{"email":"user@example.com"}'
+ */
+export const deleteUserCompletely = mutation({
+  args: {
+    email: v.string(),
+  },
+  handler: async (ctx, args) => {
+    // Find user by email
+    const user = await ctx.db
+      .query("users")
+      .withIndex("email", (q) => q.eq("email", args.email))
+      .first();
+
+    if (!user) {
+      return {
+        success: false,
+        message: `No user found with email: ${args.email}`,
+      };
+    }
+
+    const userId = user._id;
+
+    // Delete all auth accounts for this user
+    const authAccounts = await ctx.db
+      .query("authAccounts")
+      .filter((q) => q.eq(q.field("userId"), userId))
+      .collect();
+
+    for (const account of authAccounts) {
+      await ctx.db.delete(account._id);
+    }
+
+    // Delete all auth sessions for this user
+    const authSessions = await ctx.db
+      .query("authSessions")
+      .filter((q) => q.eq(q.field("userId"), userId))
+      .collect();
+
+    for (const session of authSessions) {
+      await ctx.db.delete(session._id);
+    }
+
+    // Delete the user
+    await ctx.db.delete(userId);
+
+    return {
+      success: true,
+      message: `User ${args.email} and all associated auth data have been completely deleted`,
+      deletedAccounts: authAccounts.length,
+      deletedSessions: authSessions.length,
+    };
+  },
+});
+
+/**
  * Delete a user account by email (use carefully!)
  * npx convex run adminSetup:deleteUser '{"email":"user@example.com"}'
  */
@@ -86,39 +142,6 @@ export const deleteUser = mutation({
     return {
       success: true,
       message: `User ${args.email} has been deleted`,
-    };
-  },
-});
-
-/**
- * Create admin account with predefined credentials
- * npx convex run adminSetup:createAdminAccount '{}'
- */
-export const createAdminAccount = mutation({
-  args: {},
-  handler: async (ctx, args) => {
-    const adminEmail = "nirvanatech07@gmail.com";
-
-    // Check if admin already exists
-    const existingUser = await ctx.db
-      .query("users")
-      .withIndex("email", (q) => q.eq("email", adminEmail))
-      .first();
-
-    if (existingUser) {
-      return {
-        success: false,
-        message: `Admin account ${adminEmail} already exists. Please delete it first or login with existing credentials.`,
-        alreadyExists: true,
-      };
-    }
-
-    // Note: We cannot directly create a password-protected account from a mutation
-    // The user must use the signup form to create the account with password
-    return {
-      success: false,
-      message: "Please use the signup form at /auth to create the admin account with email: nirvanatech07@gmail.com and password: SalmanBhai..98",
-      needsSignup: true,
     };
   },
 });
