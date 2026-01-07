@@ -78,13 +78,25 @@ export default function Auth() {
 
       await signIn("password", formData);
 
+      // Wait a moment for auth to complete
+      await new Promise(resolve => setTimeout(resolve, 500));
+
       // Update profile with additional info
-      await updateUserProfile({
-        name: signupData.name,
-        username: signupData.username,
-        phone: signupData.phone,
-        passwordHint: signupData.passwordHint,
-      });
+      try {
+        await updateUserProfile({
+          name: signupData.name,
+          username: signupData.username,
+          phone: signupData.phone,
+          passwordHint: signupData.passwordHint,
+        });
+      } catch (profileErr: any) {
+        console.error("Profile update error:", profileErr);
+        // If username is taken, show specific error
+        if (profileErr.message?.includes("Username already taken")) {
+          throw new Error("Username already taken. Please choose a different username.");
+        }
+        throw new Error("Failed to update profile. Please try logging in.");
+      }
 
       toast.success("Account created successfully!");
       navigate(redirectAfterAuth);
